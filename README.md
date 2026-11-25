@@ -73,10 +73,16 @@ Change the port with `CALLFIRST_PORT=8080 python -m callfirst.app`.
 
 Everything that affects the numbers is in [`callfirst/config.py`](callfirst/config.py): seed
 `20261204`, patient-level 60/20/20 split, model grids, capacities, bootstrap count, minutes per call.
-The data file is checked against a SHA-256 hash. Three consecutive runs on our machine produced
-identical `reports/metrics.json` test results. Small differences can appear with other library
-versions; `reports/metrics.json` records the versions used (Python 3.12.16, scikit-learn 1.9.1,
-numpy 2.5.5, pandas 3.1.1).
+The data file is checked against a SHA-256 hash. `reports/metrics.json` records the versions used.
+
+| Run | Environment | AUROC | Per 100 calls at 10% (95% CI) | vs LACE | vs prior admissions |
+|---|---|---:|---:|---:|---:|
+| Published (3 identical runs) | Python 3.12.16, scikit-learn 1.9.1, numpy 2.5.5, pandas 3.1.1 | 0.6703 | 26.05 (23.37–28.66) | +8.88 | +1.82 |
+| Fresh install from `requirements.txt` | Python 3.9.6, scikit-learn 1.6.1, numpy 2.0.2, pandas 2.3.3 | 0.6703 | 26.05 (23.37–28.66) | +8.88 | +1.82 |
+
+Across these two environments the largest difference in any reported metric (selection, test,
+paired differences, calibration, subgroups) is 1.3e-14, i.e. floating-point noise. If your numbers differ, compare the
+`environment` and `data.sha256` fields of `reports/metrics.json` first.
 
 ## Method
 

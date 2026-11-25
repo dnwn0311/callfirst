@@ -41,9 +41,9 @@ RESOURCES = {
          "url": "https://diabetes.org/tools-resources/diabetes-education-programs"},
     ],
     "KR": [
-        {"name": "지역사회 통합돌봄 (Integrated community care)",
-         "detail": "Apply at the local 행정복지센터; Act on Integrated Support for Community Care, in force from March 2026",
-         "url": "https://www.mohw.go.kr"},
+        {"name": "통합돌봄 퇴원환자 연계 (Integrated care discharge linkage)",
+         "detail": "Hospital discharge coordinator works with the 시·군·구 integrated care team; nationwide since 27 March 2026",
+         "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/news/promotion/1309483_1118.html"},
         {"name": "노인장기요양보험 (Long-term care insurance)", "detail": "National Health Insurance Service · 1577-1000",
          "url": "https://www.longtermcare.or.kr"},
         {"name": "보건소 방문건강관리 (Public health center home visits)", "detail": "Local public health center",
