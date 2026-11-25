@@ -184,9 +184,10 @@ symptoms mean emergency care whatever the score.
   [CMS Transitional Care Management](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/care-management/transitional-care-management-services),
   [ADA Standards of Care in Diabetes](https://professional.diabetes.org/standards-of-care).
 - Libraries: scikit-learn, NumPy, pandas, SciPy, FastAPI, Uvicorn, pytest. No pre-trained models.
-- **AI tools:** Claude Code (Anthropic) helped write the code, tests and documentation and checked
-  sources; the author chose the problem, reviewed the method and results, and can explain every
-  function. (Edit this line to match what you actually did.)
+- **AI tools:** Built with Claude Code (Anthropic, Claude Opus 5.5). It read the hackathon rules,
+  proposed three project options (the author chose this one), designed the evaluation protocol,
+  wrote the code, tests, interface, logo and documentation, ran the experiments, and checked the
+  cited sources. The author set the direction and made the decisions on scope and publication.
 
 ## License
 
