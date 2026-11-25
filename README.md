@@ -57,6 +57,11 @@ python -m callfirst.app              # open http://127.0.0.1:8000
 `pytest` runs the tests (LACE scoring, tie handling, patient-level bootstrap, checklist rules, API).
 Change the port with `CALLFIRST_PORT=8080 python -m callfirst.app`.
 
+On macOS with numpy 2.0.x (what Python 3.9 installs), training may print several
+`RuntimeWarning: ... encountered in matmul` lines from scikit-learn. They are harmless: a fresh
+clone on Python 3.9 with those warnings produced the same results as the published run (see
+[Reproducing the evaluation](#reproducing-the-evaluation)).
+
 ### What you will see
 
 1. **Today's discharges**: 24 random patients from the held-out test split, ordered by CallFirst.
