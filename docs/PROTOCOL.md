@@ -46,8 +46,8 @@ fitted on the validation split.
 - **Primary:** readmissions reached per 100 calls when the coordinator can call the top 10% of
   discharges (positive predictive value at 10% capacity), compared with LACE and random.
 - Share of all 30-day readmissions reached at 5 / 10 / 20 / 30% capacity (sensitivity).
-- Nurse time per readmission reached, assuming 10 minutes per call (a stated assumption, not a
-  measurement).
+- Nurse time per readmission reached, assuming a fixed time per call (a stated assumption, not a
+  measurement; see Changes).
 - AUROC, AUPRC, Brier score, calibration (10 equal-size bins; observed vs predicted).
 - 95% confidence intervals: 2,000 bootstrap resamples of **patients** (all of a patient's encounters
   move together). Model-vs-LACE differences are bootstrapped as paired differences.
@@ -64,3 +64,14 @@ its average readmission rate), so results do not depend on row order.
   beat a score a nurse can compute by hand.
 - The data is US, 1999-2008, diabetic inpatients only. No claim is made for other populations,
   countries (including Korea), or current practice without local re-validation.
+
+## Changes after the first test run
+
+- 2026-11-25: added a **prior admissions only** ranking (number of hospital admissions in the past
+  year) as an extra, post-hoc baseline, because it is the strongest single input and a rule a nurse
+  could apply without software. It is labelled post-hoc in the results. Nothing about the deployed
+  model, its calibration, or the other baselines was changed.
+- 2026-11-25: the assumed time per call was raised from 10 to 20 minutes after reading AHRQ RED
+  Tool 5, which puts a post-discharge call at about 20 to 60 minutes. This only rescales the
+  nurse-time column; rankings and all other metrics are unchanged. At 60 minutes per call every
+  nurse-time figure triples.

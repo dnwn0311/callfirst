@@ -34,7 +34,7 @@ HGB_GRID = [
 # "A care coordinator can call k% of today's discharges."
 CAPACITIES = [0.05, 0.10, 0.20, 0.30]
 PRIMARY_CAPACITY = 0.10
-MINUTES_PER_CALL = 10   # stated assumption used to express cost in nurse time
+MINUTES_PER_CALL = 20   # stated assumption: AHRQ RED Tool 5 says calls take about 20-60 minutes; we use the low end
 
 BOOTSTRAP_RESAMPLES = 2000   # clustered by patient
 CALIBRATION_BINS = 10

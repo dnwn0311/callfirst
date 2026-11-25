@@ -1,0 +1,694 @@
+{
+ "generated": "2026-11-25 23:04:08 +0900",
+ "runtime_seconds": 86.5,
+ "environment": {
+  "python": "3.12.16",
+  "scikit-learn": "1.9.1",
+  "numpy": "2.5.5",
+  "pandas": "3.1.1",
+  "platform": "macOS-26.6.2-arm64-arm-64bit"
+ },
+ "data": {
+  "source": "UCI Diabetes 130-US Hospitals for Years 1999-2008, DOI 10.24432/C5230J, CC BY 4.0",
+  "sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+  "raw_encounters": 101766,
+  "after_exclusions": 99340,
+  "patients": 69987,
+  "splits": {
+   "train": {
+    "encounters": 59391,
+    "patients": 41991,
+    "readmission_rate": 0.11220555302992036
+   },
+   "valid": {
+    "encounters": 20098,
+    "patients": 13998,
+    "readmission_rate": 0.11777291272763458
+   },
+   "test": {
+    "encounters": 19851,
+    "patients": 13998,
+    "readmission_rate": 0.1150068006649539
+   }
+  }
+ },
+ "config": {
+  "seed": 20261204,
+  "capacities": [
+   0.05,
+   0.1,
+   0.2,
+   0.3
+  ],
+  "primary_capacity": 0.1,
+  "minutes_per_call": 20,
+  "bootstrap_resamples": 2000,
+  "min_auroc_gain_for_complex_model": 0.01
+ },
+ "selection": {
+  "logistic": [
+   {
+    "C": 0.01,
+    "valid_auroc": 0.6678157453129345
+   },
+   {
+    "C": 0.1,
+    "valid_auroc": 0.6674106156272361
+   },
+   {
+    "C": 1.0,
+    "valid_auroc": 0.6673105662506409
+   }
+  ],
+  "boosting": [
+   {
+    "learning_rate": 0.05,
+    "max_leaf_nodes": 15,
+    "max_iter": 300,
+    "min_samples_leaf": 40,
+    "valid_auroc": 0.667950593954716
+   },
+   {
+    "learning_rate": 0.05,
+    "max_leaf_nodes": 31,
+    "max_iter": 300,
+    "min_samples_leaf": 40,
+    "valid_auroc": 0.6628650524525357
+   },
+   {
+    "learning_rate": 0.1,
+    "max_leaf_nodes": 15,
+    "max_iter": 300,
+    "min_samples_leaf": 40,
+    "valid_auroc": 0.6606906642685315
+   },
+   {
+    "learning_rate": 0.1,
+    "max_leaf_nodes": 31,
+    "max_iter": 300,
+    "min_samples_leaf": 40,
+    "valid_auroc": 0.6523805020515364
+   }
+  ],
+  "boosting_minus_logistic_valid_auroc": 0.00013484864178148204,
+  "chosen": "logistic",
+  "params": {
+   "C": 0.01
+  }
+ },
+ "test": {
+  "random": {
+   "auroc": 0.5,
+   "auprc": 0.1150068006649539,
+   "capacity": {
+    "0.05": {
+     "calls": 993,
+     "readmissions_reached": 114.20175306029923,
+     "per_100_calls": 11.50068006649539,
+     "share_of_readmissions": 0.05002266888317969,
+     "per_100_calls_ci": [
+      10.941384665080705,
+      12.064091660917917
+     ],
+     "share_of_readmissions_ci": [
+      0.04997496118739072,
+      0.05002290018123576
+     ]
+    },
+    "0.1": {
+     "calls": 1985,
+     "readmissions_reached": 228.2884993199335,
+     "per_100_calls": 11.50068006649539,
+     "share_of_readmissions": 0.09999496247040451,
+     "per_100_calls_ci": [
+      10.941384665080705,
+      12.064091660917917
+     ],
+     "share_of_readmissions_ci": [
+      0.0999748294690344,
+      0.10002518257365903
+     ]
+    },
+    "0.2": {
+     "calls": 3970,
+     "readmissions_reached": 456.576998639867,
+     "per_100_calls": 11.50068006649539,
+     "share_of_readmissions": 0.19998992494080903,
+     "per_100_calls_ci": [
+      10.941384665080705,
+      12.064091660917917
+     ],
+     "share_of_readmissions_ci": [
+      0.19997968718261222,
+      0.20002030675900973
+     ]
+    },
+    "0.3": {
+     "calls": 5955,
+     "readmissions_reached": 684.8654979598005,
+     "per_100_calls": 11.50068006649539,
+     "share_of_readmissions": 0.2999848874112135,
+     "per_100_calls_ci": [
+      10.941384665080703,
+      12.064091660917915
+     ],
+     "share_of_readmissions_ci": [
+      0.29997481742634097,
+      0.3000251705309656
+     ]
+    }
+   },
+   "auroc_ci": [
+    0.5,
+    0.5
+   ]
+  },
+  "prior_admissions": {
+   "auroc": 0.6108879123193766,
+   "auprc": 0.18414752820210317,
+   "capacity": {
+    "0.05": {
+     "calls": 993,
+     "readmissions_reached": 291.61852433281007,
+     "per_100_calls": 29.367424404109777,
+     "share_of_readmissions": 0.1277347894580859,
+     "per_100_calls_ci": [
+      25.200674341957072,
+      33.751820258338824
+     ],
+     "share_of_readmissions_ci": [
+      0.11224129549336133,
+      0.14356284790535973
+     ]
+    },
+    "0.1": {
+     "calls": 1985,
+     "readmissions_reached": 480.91983695652175,
+     "per_100_calls": 24.22769959478699,
+     "share_of_readmissions": 0.21065257860557238,
+     "per_100_calls_ci": [
+      21.641110964698253,
+      26.952227984005994
+     ],
+     "share_of_readmissions_ci": [
+      0.1928791325885044,
+      0.2294667387846184
+     ]
+    },
+    "0.2": {
+     "calls": 3970,
+     "readmissions_reached": 789.1605781865966,
+     "per_100_calls": 19.878100206211503,
+     "share_of_readmissions": 0.3456682339844926,
+     "per_100_calls_ci": [
+      18.204952053544652,
+      21.64228175705547
+     ],
+     "share_of_readmissions_ci": [
+      0.32613852643409924,
+      0.36642275747738917
+     ]
+    },
+    "0.3": {
+     "calls": 5955,
+     "readmissions_reached": 1057.3051248357424,
+     "per_100_calls": 17.754913935109023,
+     "share_of_readmissions": 0.46312094824167427,
+     "per_100_calls_ci": [
+      16.481935210111573,
+      19.087626133341292
+     ],
+     "share_of_readmissions_ci": [
+      0.4431596451331212,
+      0.48400856618987825
+     ]
+    }
+   },
+   "auroc_ci": [
+    0.5967938923080954,
+    0.6256646797585107
+   ]
+  },
+  "lace": {
+   "auroc": 0.5796906078786181,
+   "auprc": 0.14417510497642153,
+   "capacity": {
+    "0.05": {
+     "calls": 993,
+     "readmissions_reached": 180.24615384615385,
+     "per_100_calls": 18.151677124486792,
+     "share_of_readmissions": 0.07895144715118434,
+     "per_100_calls_ci": [
+      15.451034748983583,
+      20.849692380282093
+     ],
+     "share_of_readmissions_ci": [
+      0.06784255835772167,
+      0.08974956315264489
+     ]
+    },
+    "0.1": {
+     "calls": 1985,
+     "readmissions_reached": 340.7100864553314,
+     "per_100_calls": 17.16423609346758,
+     "share_of_readmissions": 0.1492378828100444,
+     "per_100_calls_ci": [
+      15.40002510019038,
+      18.914340102073623
+     ],
+     "share_of_readmissions_ci": [
+      0.13587528229450851,
+      0.16258104992154457
+     ]
+    },
+    "0.2": {
+     "calls": 3970,
+     "readmissions_reached": 635.9097295398665,
+     "per_100_calls": 16.017877318384546,
+     "share_of_readmissions": 0.2785412744370856,
+     "per_100_calls_ci": [
+      14.772924747110782,
+      17.29818371924355
+     ],
+     "share_of_readmissions_ci": [
+      0.26113761331851976,
+      0.29645368984262777
+     ]
+    },
+    "0.3": {
+     "calls": 5955,
+     "readmissions_reached": 887.3586776859504,
+     "per_100_calls": 14.90106931462553,
+     "share_of_readmissions": 0.38868098015153324,
+     "per_100_calls_ci": [
+      13.873752462586584,
+      15.968034684952404
+     ],
+     "share_of_readmissions_ci": [
+      0.36824909419749796,
+      0.40840427703406756
+     ]
+    }
+   },
+   "auroc_ci": [
+    0.5662921996136276,
+    0.5931819715317971
+   ]
+  },
+  "logistic": {
+   "auroc": 0.6702541035466867,
+   "auprc": 0.21534603134869476,
+   "capacity": {
+    "0.05": {
+     "calls": 993,
+     "readmissions_reached": 296.0,
+     "per_100_calls": 29.808660624370592,
+     "share_of_readmissions": 0.12965396408234778,
+     "per_100_calls_ci": [
+      26.192653140511496,
+      33.56868345752909
+     ],
+     "share_of_readmissions_ci": [
+      0.11531525222701694,
+      0.14337821258323002
+     ]
+    },
+    "0.1": {
+     "calls": 1985,
+     "readmissions_reached": 517.0,
+     "per_100_calls": 26.045340050377835,
+     "share_of_readmissions": 0.2264564169951818,
+     "per_100_calls_ci": [
+      23.3681063403843,
+      28.65718126734389
+     ],
+     "share_of_readmissions_ci": [
+      0.20884709707085292,
+      0.2441123180698744
+     ]
+    },
+    "0.2": {
+     "calls": 3970,
+     "readmissions_reached": 864.0,
+     "per_100_calls": 21.7632241813602,
+     "share_of_readmissions": 0.37844940867279897,
+     "per_100_calls_ci": [
+      20.171208298546734,
+      23.619684576629872
+     ],
+     "share_of_readmissions_ci": [
+      0.3595645775516813,
+      0.4003423957930622
+     ]
+    },
+    "0.3": {
+     "calls": 5955,
+     "readmissions_reached": 1170.0,
+     "per_100_calls": 19.64735516372796,
+     "share_of_readmissions": 0.5124835742444153,
+     "per_100_calls_ci": [
+      18.329581273239697,
+      21.008886175407728
+     ],
+     "share_of_readmissions_ci": [
+      0.49160291715209437,
+      0.533708794476688
+     ]
+    }
+   },
+   "auroc_ci": [
+    0.656936781176681,
+    0.6836287034610745
+   ]
+  },
+  "boosting": {
+   "auroc": 0.6774040693986677,
+   "auprc": 0.23030681635455863,
+   "capacity": {
+    "0.05": {
+     "calls": 993,
+     "readmissions_reached": 323.0,
+     "per_100_calls": 32.527693856998994,
+     "share_of_readmissions": 0.14148050810337276,
+     "per_100_calls_ci": [
+      28.57142857142857,
+      37.549820959078666
+     ],
+     "share_of_readmissions_ci": [
+      0.12626538800253528,
+      0.15967949436242432
+     ]
+    },
+    "0.1": {
+     "calls": 1985,
+     "readmissions_reached": 535.0,
+     "per_100_calls": 26.952141057934508,
+     "share_of_readmissions": 0.23434077967586509,
+     "per_100_calls_ci": [
+      24.273903627836212,
+      29.83233477884559
+     ],
+     "share_of_readmissions_ci": [
+      0.2150040321540441,
+      0.2534875360525705
+     ]
+    },
+    "0.2": {
+     "calls": 3970,
+     "readmissions_reached": 880.0,
+     "per_100_calls": 22.16624685138539,
+     "share_of_readmissions": 0.3854577310556286,
+     "per_100_calls_ci": [
+      20.405023532149833,
+      23.99807106720934
+     ],
+     "share_of_readmissions_ci": [
+      0.3647101291478275,
+      0.4071358452888736
+     ]
+    },
+    "0.3": {
+     "calls": 5955,
+     "readmissions_reached": 1176.0,
+     "per_100_calls": 19.748110831234257,
+     "share_of_readmissions": 0.5151116951379764,
+     "per_100_calls_ci": [
+      18.336963798344744,
+      21.19207504783174
+     ],
+     "share_of_readmissions_ci": [
+      0.4927211353633053,
+      0.5369595386034977
+     ]
+    }
+   },
+   "auroc_ci": [
+    0.6642249817614471,
+    0.690321654490368
+   ]
+  }
+ },
+ "paired": {
+  "lace": {
+   "logistic": {
+    "auroc_diff": 0.09056349566806854,
+    "auroc_diff_ci": [
+     0.07530031767238936,
+     0.10609741838508806
+    ],
+    "per_100_calls_diff": 8.881103956910257,
+    "per_100_calls_diff_ci": [
+     6.689781217486572,
+     11.138768200180916
+    ],
+    "share_of_resamples_better": 1.0
+   },
+   "boosting": {
+    "auroc_diff": 0.09771346152004956,
+    "auroc_diff_ci": [
+     0.08228109063035494,
+     0.11337672698513379
+    ],
+    "per_100_calls_diff": 9.787904964466932,
+    "per_100_calls_diff_ci": [
+     7.4055176673602,
+     12.268654501876256
+    ],
+    "share_of_resamples_better": 1.0
+   },
+   "prior_admissions": {
+    "auroc_diff": 0.03119730444075841,
+    "auroc_diff_ci": [
+     0.014294163405918017,
+     0.04911324573109615
+    ],
+    "per_100_calls_diff": 7.063463501319411,
+    "per_100_calls_diff_ci": [
+     4.700028260342616,
+     9.515590835152814
+    ],
+    "share_of_resamples_better": 1.0
+   }
+  },
+  "prior_admissions": {
+   "logistic": {
+    "auroc_diff": 0.05936619122731013,
+    "auroc_diff_ci": [
+     0.050586895744718335,
+     0.067832416216982
+    ],
+    "per_100_calls_diff": 1.8176404555908465,
+    "per_100_calls_diff_ci": [
+     0.4637017292896425,
+     3.100584209299621
+    ],
+    "share_of_resamples_better": 0.995
+   },
+   "boosting": {
+    "auroc_diff": 0.06651615707929115,
+    "auroc_diff_ci": [
+     0.0564159514727435,
+     0.07678165744285895
+    ],
+    "per_100_calls_diff": 2.72444146314752,
+    "per_100_calls_diff_ci": [
+     1.3196252838150242,
+     4.099125623259857
+    ],
+    "share_of_resamples_better": 1.0
+   }
+  }
+ },
+ "calibration": {
+  "brier": 0.09745263106038678,
+  "brier_prevalence_only": 0.10178808345407825,
+  "mean_predicted": 0.11820502643112095,
+  "observed": 0.1150068006649539,
+  "bins": [
+   {
+    "mean_predicted": 0.041071005703360045,
+    "observed": 0.039778449144008056,
+    "n": 1986
+   },
+   {
+    "mean_predicted": 0.05155280996706148,
+    "observed": 0.04987405541561713,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.06748997342332619,
+    "observed": 0.06700251889168765,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.08663442181583643,
+    "observed": 0.0906801007556675,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.09410558368523406,
+    "observed": 0.08664987405541562,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.1127446264158562,
+    "observed": 0.10982367758186398,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.1279013617119507,
+    "observed": 0.12141057934508816,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.15507876349648014,
+    "observed": 0.14408060453400504,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.18168939339356519,
+    "observed": 0.1853904282115869,
+    "n": 1985
+   },
+   {
+    "mean_predicted": 0.26382118314726843,
+    "observed": 0.2554156171284635,
+    "n": 1985
+   }
+  ]
+ },
+ "subgroups": [
+  {
+   "attribute": "age",
+   "group": "under 60",
+   "n": 6453,
+   "readmissions": 660,
+   "readmission_rate": 0.10227801022780102,
+   "auroc_model": 0.7204303522014552,
+   "auroc_lace": 0.6146548342042905,
+   "share_called": 0.09034557570122424,
+   "share_of_readmissions_reached": 0.2681818181818182,
+   "interpret": true
+  },
+  {
+   "attribute": "age",
+   "group": "60-79",
+   "n": 9457,
+   "readmissions": 1103,
+   "readmission_rate": 0.11663318177011738,
+   "auroc_model": 0.6618358185209294,
+   "auroc_lace": 0.570925898875051,
+   "share_called": 0.09886856296922915,
+   "share_of_readmissions_reached": 0.2157751586582049,
+   "interpret": true
+  },
+  {
+   "attribute": "age",
+   "group": "80+",
+   "n": 3941,
+   "readmissions": 520,
+   "readmission_rate": 0.13194620654656178,
+   "auroc_model": 0.5953814674071909,
+   "auroc_lace": 0.5362025835900434,
+   "share_called": 0.11875158589190561,
+   "share_of_readmissions_reached": 0.19807692307692307,
+   "interpret": true
+  },
+  {
+   "attribute": "sex",
+   "group": "female",
+   "n": 10680,
+   "readmissions": 1241,
+   "readmission_rate": 0.11619850187265918,
+   "auroc_model": 0.6793189809727826,
+   "auroc_lace": 0.577488951278744,
+   "share_called": 0.10486891385767791,
+   "share_of_readmissions_reached": 0.233682514101531,
+   "interpret": true
+  },
+  {
+   "attribute": "sex",
+   "group": "male",
+   "n": 9171,
+   "readmissions": 1042,
+   "readmission_rate": 0.11361901646494385,
+   "auroc_model": 0.6593524664308185,
+   "auroc_lace": 0.5820643089868764,
+   "share_called": 0.09442808853996293,
+   "share_of_readmissions_reached": 0.21880998080614203,
+   "interpret": true
+  },
+  {
+   "attribute": "race",
+   "group": "AfricanAmerican",
+   "n": 3509,
+   "readmissions": 400,
+   "readmission_rate": 0.1139925904816187,
+   "auroc_model": 0.6896687037632679,
+   "auroc_lace": 0.5681010775168864,
+   "share_called": 0.10401823881447705,
+   "share_of_readmissions_reached": 0.2425,
+   "interpret": true
+  },
+  {
+   "attribute": "race",
+   "group": "Asian",
+   "n": 95,
+   "readmissions": 13,
+   "readmission_rate": 0.1368421052631579,
+   "auroc_model": 0.7420262664165104,
+   "auroc_lace": 0.5586303939962477,
+   "share_called": 0.07368421052631578,
+   "share_of_readmissions_reached": 0.15384615384615385,
+   "interpret": false
+  },
+  {
+   "attribute": "race",
+   "group": "Caucasian",
+   "n": 15128,
+   "readmissions": 1776,
+   "readmission_rate": 0.11739820200951877,
+   "auroc_model": 0.6625330533874197,
+   "auroc_lace": 0.5798344100354099,
+   "share_called": 0.10219460602855632,
+   "share_of_readmissions_reached": 0.22635135135135134,
+   "interpret": true
+  },
+  {
+   "attribute": "race",
+   "group": "Hispanic",
+   "n": 369,
+   "readmissions": 30,
+   "readmission_rate": 0.08130081300813008,
+   "auroc_model": 0.724385447394297,
+   "auroc_lace": 0.578613569321534,
+   "share_called": 0.07046070460704607,
+   "share_of_readmissions_reached": 0.26666666666666666,
+   "interpret": false
+  },
+  {
+   "attribute": "race",
+   "group": "Other",
+   "n": 285,
+   "readmissions": 27,
+   "readmission_rate": 0.09473684210526316,
+   "auroc_model": 0.6471432672983061,
+   "auroc_lace": 0.719207579672696,
+   "share_called": 0.07719298245614035,
+   "share_of_readmissions_reached": 0.1111111111111111,
+   "interpret": false
+  },
+  {
+   "attribute": "race",
+   "group": "unknown",
+   "n": 465,
+   "readmissions": 37,
+   "readmission_rate": 0.07956989247311828,
+   "auroc_model": 0.7203839353372063,
+   "auroc_lace": 0.5940578428896186,
+   "share_called": 0.043010752688172046,
+   "share_of_readmissions_reached": 0.16216216216216217,
+   "interpret": false
+  }
+ ]
+}

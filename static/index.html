@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CallFirst</title>
+  <link rel="icon" href="/static/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="/static/logo.svg" alt="" width="40" height="40">
+      <div>
+        <div class="name">CallFirst</div>
+        <div class="tagline">Who to call first after hospital discharge</div>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-view="list" aria-selected="true">Today's discharges</button>
+      <button role="tab" data-view="try" aria-selected="false">Try a patient</button>
+      <button role="tab" data-view="eval" aria-selected="false">Evaluation</button>
+    </nav>
+  </header>
+  <div class="disclaimer" id="disclaimer" role="note"></div>
+
+  <main>
+    <!-- Today's discharges -->
+    <section id="view-list" class="view">
+      <div class="toolbar">
+        <div class="toolbar-title">
+          <strong>24 discharges today</strong>
+          <span class="muted">random patients from the held-out test set</span>
+        </div>
+        <label class="capacity">Calls you can make today
+          <input type="range" id="capacity" min="0" max="24" value="6">
+          <output id="capacity-out">6</output>
+        </label>
+        <div class="seg" role="group" aria-label="Order the list by">
+          <span class="muted">Order by</span>
+          <button data-order="model" aria-pressed="true">CallFirst</button>
+          <button data-order="lace" aria-pressed="false">LACE score</button>
+        </div>
+        <label class="switch"><input type="checkbox" id="reveal"><span>Show 30-day outcome</span></label>
+      </div>
+      <div id="reveal-summary" class="reveal-summary" hidden></div>
+      <div class="split">
+        <ol id="list" class="worklist" aria-label="Discharge list"></ol>
+        <aside id="detail" class="detail" aria-live="polite"><p class="muted">Loading today's discharges…</p></aside>
+      </div>
+    </section>
+
+    <!-- Try a patient -->
+    <section id="view-try" class="view" hidden>
+      <div class="split">
+        <form id="try-form" class="card form" autocomplete="off">
+          <h2>Describe a discharge</h2>
+          <p class="muted small">A made-up patient. Fields you leave alone stay at the typical value in the training data.</p>
+          <div class="presets">
+            <button type="button" data-preset="typical">Typical</button>
+            <button type="button" data-preset="repeat">Repeat admissions</button>
+            <button type="button" data-preset="insulin">New insulin plan</button>
+          </div>
+          <div id="form-fields" class="fields"></div>
+        </form>
+        <aside id="try-detail" class="detail" aria-live="polite"><p class="muted">Scoring…</p></aside>
+      </div>
+    </section>
+
+    <!-- Evaluation -->
+    <section id="view-eval" class="view" hidden>
+      <div id="eval"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Data: Clore, Cios, DeShazo &amp; Strack, <em>Diabetes 130-US Hospitals for Years 1999-2008</em>, UCI Machine Learning Repository,
+    <a href="https://doi.org/10.24432/C5230J" target="_blank" rel="noopener">doi:10.24432/C5230J</a> (CC BY 4.0).
+    Baseline: LACE index, van Walraven et al., CMAJ 2010. Protocol and full results: <code>docs/PROTOCOL.md</code>, <code>reports/EVALUATION.md</code>.
+  </footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
